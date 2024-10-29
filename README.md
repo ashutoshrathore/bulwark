@@ -70,5 +70,6 @@ The CI/CD pipeline is managed by **GitHub Actions**, supporting both infrastruct
 ## TLS
 Self-signed certificate create for FQDN paymyfavour.com manually and stored in kubernetes Secret
 ```
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
 kubectl create secret tls bulwark-app-tls --cert=tls.crt --key=tls.key -n bulwark-app
 ```
