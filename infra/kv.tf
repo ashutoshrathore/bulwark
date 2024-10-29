@@ -56,8 +56,8 @@ resource "azurerm_key_vault_access_policy" "tf_access" {
   key_vault_id = azurerm_key_vault.bulwark-vault-neu.id
   tenant_id = var.tenant_id
   object_id = "ea2d8618-4f58-4d9b-9226-43e9a048d8ff"
-  key_permissions = [ "Get", "List", "Create" ]
-  secret_permissions = [ "Get", "List", "Create" ]
-  certificate_permissions = [ "Get", "List", "Create" ]
+  key_permissions = [ "Get", "List", "Set" ]
+  secret_permissions = [ "Get", "List", "Set" ]
+  certificate_permissions = [ "Get", "List", "Set" ]
 }
 
