@@ -3,6 +3,11 @@ resource "azurerm_kubernetes_cluster" "aks" {
   location            = var.location
   resource_group_name = var.resource_group_name
   dns_prefix          = var.dns_prefix
+  network_profile {
+    network_plugin = "kubenet"
+    network_policy = "calico"
+
+  }
 
   default_node_pool {
     name           = "default"
