@@ -8,7 +8,7 @@ resource "azurerm_kubernetes_cluster" "aks" {
     network_policy = "calico"
 
   }
-  local_account_disabled = false
+ # local_account_disabled = false
 
   default_node_pool {
     name           = "default"
