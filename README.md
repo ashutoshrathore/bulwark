@@ -66,3 +66,9 @@ The CI/CD pipeline is managed by **GitHub Actions**, supporting both infrastruct
    - The Node.js application is built, and the image is pushed to Docker Hub.
    - Helm is used to deploy the updated image on Kubernetes.
 3. **Automated HTTPS Configuration**: Helm configures the app to use an NGINX ingress controller (or similar) for HTTPS.
+
+## TLS
+Self-signed certificate create for FQDN paymyfavour.com manually and stored in kubernetes Secret
+```
+kubectl create secret tls bulwark-app-tls --cert=tls.crt --key=tls.key -n bulwark-app
+```
