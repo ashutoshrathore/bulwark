@@ -1,0 +1,21 @@
+image:
+  repository: ashutoshrathore06/node-hostname-app
+  tag: latest
+
+service:
+  type: LoadBalancer
+  port: 80
+
+ingress:
+  host: paymyfavour.com  # Replace with your actual domain
+  tlsSecretName: bulwark-app-tls  # Name of the TLS secret
+
+containerPort: 3000
+
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "250m"
+  limits:
+    memory: "1Gi"
+    cpu: "500m"
