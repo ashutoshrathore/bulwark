@@ -55,7 +55,7 @@ resource "azurerm_key_vault_access_policy" "tf_access" {
   depends_on = [ azurerm_key_vault.bulwark-vault-neu ]
   key_vault_id = azurerm_key_vault.bulwark-vault-neu.id
   tenant_id = var.tenant_id
-  object_id = var.ARM_CLIENT_ID
+  object_id = "241a28cc-f026-4f15-8c43-d25defd40168"
   key_permissions = [ "Get", "List", "Create" ]
   secret_permissions = [ "Get", "List", "Set" ]
   certificate_permissions = [ "Get", "List", "Create" ]
