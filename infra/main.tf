@@ -11,7 +11,7 @@ resource "azurerm_resource_group" "neu-rg" {
 
 module "vnet-neu-1" {
   source              = "./modules/network"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.neu-rg.name
   vnet_name           = "bulwark-vnet1"
   subnet_name         = "bulwark-subnet-1"
   address_space       = ["10.38.112.0/20"]
@@ -24,7 +24,7 @@ module "aks_neu_1" {
   depends_on          = [module.vnet-neu-1]
   source              = "./modules/k8s"
   aks_name            = local.cluster_name
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.neu-rg.name
   subnet_id           = module.vnet1.aks_subnet_id
   location            = var.location
   dns_prefix          = "aksdns"
