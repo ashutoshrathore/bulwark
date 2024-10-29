@@ -13,11 +13,3 @@ provider "azurerm" {
   features {}
 }
 
-provider "helm" {
-  kubernetes {
-    host                   = module.aks_neu_1.host
-    cluster_ca_certificate = base64decode(module.aks_neu_1[0].cluster_certificate)
-    client_certificate     = base64decode(module.aks_neu_1[0].client_key)
-    token                  = module.aks_neu_1[0].client_secret
-  }
-}
