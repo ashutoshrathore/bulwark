@@ -25,7 +25,7 @@ module "aks_neu_1" {
   source              = "./modules/k8s"
   aks_name            = local.cluster_name
   resource_group_name = azurerm_resource_group.neu-rg.name
-  subnet_id           = module.vnet1.aks_subnet_id
+  subnet_id           = module.vnet-neu-1.aks_subnet_id
   location            = var.location
   dns_prefix          = "aksdns"
   node_vm_size        = "Standard_DS2_v2"
