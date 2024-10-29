@@ -21,7 +21,6 @@ module "vnet-neu-1" {
 }
 
 module "aks_neu_1" {
-  depends_on          = [module.vnet-neu-1]
   source              = "./modules/k8s"
   aks_name            = local.cluster_name
   resource_group_name = azurerm_resource_group.neu-rg.name
