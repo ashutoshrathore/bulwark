@@ -14,8 +14,8 @@ module "vnet1" {
   resource_group_name = azurerm_resource_group.rg.name
   vnet_name           = "bulwark-vnet1"
   subnet_name         = "bulwark-subnet-1"
-  address_space       = ["10.0.0.0/16"]
-  subnet_prefixes     = ["10.0.10.0/24"]
+  address_space       = ["10.38.112.0/20"]
+  subnet_prefixes     = ["10.38.122.0/24"]
   location            = var.location
   tags                = var.tags
 }
