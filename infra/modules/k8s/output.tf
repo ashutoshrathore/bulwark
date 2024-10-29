@@ -10,7 +10,7 @@ output "kube_config" {
 
 
 output "host" {
-  value = azurerm_kubernetes_cluster.aks.kube_admin_config.host
+  value = length(azurerm_kubernetes_cluster.aks.kube_admin_config) > 0 ? azurerm_kubernetes_cluster.aks.kube_admin_config[0].host : null
 }
 
 output "client_key" {
