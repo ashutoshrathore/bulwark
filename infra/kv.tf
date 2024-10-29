@@ -1,6 +1,6 @@
 resource "azurerm_key_vault" "bulwark-vault-neu" {
   name                     = "bulwark-key-vault"
-  resource_group_name      = azurerm_resource_group.rg.name
+  resource_group_name      = azurerm_resource_group.neu-rg.name
   location                 = var.location
   sku_name                 = "standard"
   purge_protection_enabled = false
