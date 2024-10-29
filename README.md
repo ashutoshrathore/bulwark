@@ -67,6 +67,8 @@ The CI/CD pipeline is managed by **GitHub Actions and Terraform VCS Flow**, supp
    - Changes in the root directory or Dockerfile trigger the application build process.
    - The Node.js application is built, and the image is pushed to Docker Hub.
    - Helm is used to deploy the updated image on Kubernetes.
+<img width="1430" alt="image" src="https://github.com/user-attachments/assets/717f4aca-6f65-417d-8a83-194a7cb345b9">
+
 
 ## HTTPS
 1. Self-signed certificate create for FQDN paymyfavour.com manually and stored in kubernetes Secret
