@@ -50,3 +50,10 @@ resource "azurerm_key_vault_secret" "kube_admin_config" {
   key_vault_id = azurerm_key_vault.bulwark-vault-neu.id
   content_type = "password"
 }
+
+resource "azurerm_role_assignment" "tf" {
+  depends_on = [ azurerm_key_vault.bulwark-vault-neu ]
+  scope = azurerm_key_vault.bulwark-vault-neu.id
+  role_definition_id = "Key Vault Administrator"
+  principal_id = "241a28cc-f026-4f15-8c43-d25defd40168"  # terraform cloud app registration client id
+}
