@@ -33,8 +33,10 @@ The **Infrastructure Layer** provisions and manages all required resources on Az
 
 ### Process
 1. **Define Infrastructure**: Infrastructure configurations are stored in `.tf` files within the `infra/` directory.
-2. **GitHub Action Workflow**: When changes are pushed to `main`, a GitHub Action triggers Terraform Cloud to apply the updated configurations on Azure.
+2. **GitHub Action Workflow**: When changes are pushed to `main`, Plan and Apply will be triggered in Terraform Cloud to apply the updated configurations on Azure.
 3. **Automatic Deployment**: Merges to `main` automatically apply changes to the Kubernetes infrastructure on Azure.
+<img width="1251" alt="Screenshot 2024-10-29 at 19 32 22" src="https://github.com/user-attachments/assets/c95466d3-b0f6-49df-bc39-ec115cd19108">
+
 
 ## Application Layer
 
