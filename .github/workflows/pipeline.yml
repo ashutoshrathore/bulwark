@@ -6,6 +6,7 @@ on:
       - main
     paths-ignore:
       - 'infra/**'
+      - 'README.md' 
 
 jobs:
   build:
