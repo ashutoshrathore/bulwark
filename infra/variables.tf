@@ -21,7 +21,7 @@ variable "tags" {
 
 variable "location" {
   type    = string
-  default = "West Europe"
+  default = "North Europe"
 }
 
 variable "resource_group_name" {
