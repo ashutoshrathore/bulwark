@@ -15,7 +15,7 @@ module "vnet1" {
   vnet_name           = "bulwark-vnet1"
   subnet_name         = "bulwark-subnet-1"
   address_space       = ["10.0.0.0/16"]
-  subnet_prefixes     = ["10.1.0.0/24"]
+  subnet_prefixes     = ["10.0.10.0/24"]
   location            = var.location
   tags                = var.tags
 }
