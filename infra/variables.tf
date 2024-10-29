@@ -4,10 +4,14 @@ variable "subscription_id" {
   default     = "ebfb085f-7f7a-413e-b90c-9dd84a6008e4"
 }
 
-variable "tenant_id" {
+variable "ARM_TENANT_ID" {
   description = "Tenant id"
   type        = string
-  default     = "b57c4b9d-dc3e-4137-b4c9-05026731d558"
+}
+
+variable "ARM_CLIENT_ID" {
+  description = "CLIENT id"
+  type        = string
 }
 
 variable "tags" {
