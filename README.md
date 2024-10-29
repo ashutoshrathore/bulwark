@@ -33,7 +33,7 @@ The **Infrastructure Layer** provisions and manages all required resources on Az
 
 ### Process
 1. **Define Infrastructure**: Infrastructure configurations are stored in `.tf` files within the `infra/` directory.
-2. **GitHub Action Workflow**: When changes are pushed to `main`, Plan and Apply will be triggered in Terraform Cloud to apply the updated configurations on Azure.
+2. **Terraform Workflow**: When changes are pushed to `main`, Plan and Apply will be triggered in Terraform Cloud to apply the updated configurations on Azure.
 3. **Automatic Deployment**: Merges to `main` automatically apply changes to the Kubernetes infrastructure on Azure.
 <img width="1251" alt="Screenshot 2024-10-29 at 19 32 22" src="https://github.com/user-attachments/assets/c95466d3-b0f6-49df-bc39-ec115cd19108">
 
@@ -46,30 +46,32 @@ The **Application Layer** handles the building, containerization, and deployment
 - **Docker**: Packages the Node.js application as a container image.
 - **Docker Hub**: Stores and serves the Docker images used for deployment.
 - **Helm**: Manages the deployment and configuration of the app within the Kubernetes environment.
+- **Github Action**: Build and deploy images to AKS cluster.
 
 ### Process
 1. **Build and Package**: The Node.js application is packaged as a Docker container image.
 2. **Image Deployment**: The Docker image is pushed to Docker Hub, making it accessible to Kubernetes.
 3. **Helm Deployment**: The application is deployed on Kubernetes using Helm charts stored in the `helm/` directory.
 
+
 ## CI/CD Workflow
 
-The CI/CD pipeline is managed by **GitHub Actions**, supporting both infrastructure and application updates.
+The CI/CD pipeline is managed by **GitHub Actions and Terraform VCS Flow**, supporting application and application updates respectively.
 
 ### Workflow Details
 
 1. **Infrastructure Updates**:
    - Changes in the `infra/` directory trigger the Terraform workflow.
-   - GitHub Actions connect to Terraform Cloud via API, which deploys or updates infrastructure on Azure.
+   - GitHub connect to Terraform Cloud via VCS API, which deploys or updates infrastructure on Azure.
 2. **Application Updates**:
-   - Changes in the `app/` directory or Dockerfile trigger the application build process.
+   - Changes in the root directory or Dockerfile trigger the application build process.
    - The Node.js application is built, and the image is pushed to Docker Hub.
    - Helm is used to deploy the updated image on Kubernetes.
-3. **Automated HTTPS Configuration**: Helm configures the app to use an NGINX ingress controller (or similar) for HTTPS.
 
-## TLS
-Self-signed certificate create for FQDN paymyfavour.com manually and stored in kubernetes Secret
+## HTTPS
+1. Self-signed certificate create for FQDN paymyfavour.com manually and stored in kubernetes Secret
 ```
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt
 kubectl create secret tls bulwark-app-tls --cert=tls.crt --key=tls.key -n bulwark-app
 ```
+2. DNS record needs to be added for domain paymyfavour.com to point to the public IP of ingress controller [NOT DONE]
