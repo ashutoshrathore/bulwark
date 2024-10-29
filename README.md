@@ -1,4 +1,4 @@
-# Demo of Running NodeJS App in Kubernetes Environment
+# Project: Run NodeJS App in Kubernetes Environment
 
 This repository demonstrates deploying a Node.js application, for product **Bulwark**, in a Kubernetes (K8s) environment on Azure Cloud, accessible via HTTPS. The deployment is divided into two main layers:
 
