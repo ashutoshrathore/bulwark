@@ -3,13 +3,13 @@ locals {
   cluster_name        = "aks-weu-1"
 }
 
-resource "azurerm_resource_group" "rg" {
+resource "azurerm_resource_group" "neu-rg" {
   name     = local.resource_group_name
   location = var.location
   tags     = var.tags
 }
 
-module "vnet1" {
+module "vnet-neu-1" {
   source              = "./modules/network"
   resource_group_name = azurerm_resource_group.rg.name
   vnet_name           = "bulwark-vnet1"
@@ -20,8 +20,8 @@ module "vnet1" {
   tags                = var.tags
 }
 
-module "aks_weu_1" {
-  depends_on          = [module.vnet1]
+module "aks_neu_1" {
+  depends_on          = [module.vnet-neu-1]
   source              = "./modules/k8s"
   aks_name            = local.cluster_name
   resource_group_name = azurerm_resource_group.rg.name
